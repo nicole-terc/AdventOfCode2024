@@ -23,9 +23,4 @@ fun Any?.println() = println(this)
 /**
  * Remove an element at the given index from a list
  */
-fun <T> List<T>.withoutIndex(index: Int): List<T> {
-    if (index !in indices) throw IndexOutOfBoundsException("Index $index is out of bounds.")
-    val mutableList = this.toMutableList()
-    mutableList.removeAt(index)
-    return mutableList
-}
+fun <T> List<T>.withoutIndex(index: Int): List<T> = this.toMutableList().apply { removeAt(index) }
