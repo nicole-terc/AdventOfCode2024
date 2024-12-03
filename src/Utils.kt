@@ -19,3 +19,13 @@ fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteA
  * The cleaner shorthand for printing output.
  */
 fun Any?.println() = println(this)
+
+/**
+ * Remove an element at the given index from a list
+ */
+fun <T> List<T>.withoutIndex(index: Int): List<T> {
+    if (index !in indices) throw IndexOutOfBoundsException("Index $index is out of bounds.")
+    val mutableList = this.toMutableList()
+    mutableList.removeAt(index)
+    return mutableList
+}
