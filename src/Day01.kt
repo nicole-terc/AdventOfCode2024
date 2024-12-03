@@ -1,21 +1,43 @@
+import kotlin.math.abs
+
+private const val DAY = "01"
+
 fun main() {
-    fun part1(input: List<String>): Int {
-        return input.size
+    fun part1(input: List<String>): Long {
+        val (left, right) = input.map { line ->
+            val first = line.substringBefore(" ").toLong()
+            val second = line.substringAfterLast(" ").toLong()
+            first to second
+        }.unzip()
+
+        return left.sorted().zip(right.sorted()).sumOf { (l, r) -> abs(l - r) }
     }
 
-    fun part2(input: List<String>): Int {
-        return input.size
+    fun part2(input: List<String>): Long {
+        val (left, right) = input.map { line ->
+            val first = line.substringBefore(" ").toLong()
+            val second = line.substringAfterLast(" ").toLong()
+            first to second
+        }.unzip()
+
+        val mapRight = right.groupingBy { it }.eachCount()
+
+        return left.sumOf { n -> n * mapRight.getOrDefault(n, 0) }
     }
 
-    // Test if implementation meets criteria from the description, like:
-    check(part1(listOf("test_input")) == 1)
+    println("\n--- DAY $DAY ---\n")
 
-    // Or read a large test input from the `src/Day01_test.txt` file:
-    val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)
+    // TEST
+    val testInput = readInput("Day${DAY}_test")
+    val testOutput = part1(testInput)
+    val testOutput2 = part2(testInput)
+    println("TEST 1: $testOutput")
+    println("TEST 2: $testOutput2")
+    check(part1(testInput) == 11L)
+    check(part2(testInput) == 31L)
 
-    // Read the input from the `src/Day01.txt` file.
-    val input = readInput("Day01")
-    part1(input).println()
-    part2(input).println()
+    // REAL INPUT
+    val input = readInput("Day$DAY")
+    println("PART 1: " + part1(input))
+    println("PART 2: " + part2(input))
 }
