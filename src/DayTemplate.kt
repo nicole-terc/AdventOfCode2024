@@ -1,6 +1,4 @@
-import kotlin.math.abs
-
-private const val DAY = "01"
+private const val DAY = "00"
 
 fun main() {
     fun part1(input: List<String>): Long {
@@ -14,16 +12,17 @@ fun main() {
     println("\n--- DAY $DAY ---\n")
 
     // TEST
-    val testInput = readInput("Day${DAY}_test")
+    val testInput = readInput("day${DAY}/Day${DAY}_test")
     val testOutput = part1(testInput)
-    val testOutput2 = part2(testInput)
     println("TEST 1: $testOutput")
-    check(part1(testInput) == 11L)
+    check(testOutput == 11L)
+
+    val testOutput2 = part2(testInput)
 //    println("TEST 2: $testOutput2")
-//    check(part2(testInput) == 31L)
+//    check(testOutput2 == 31L)
 
     // REAL INPUT
-//    val input = readInput("Day$DAY")
+//    val input = readInput("day${DAY}/Day$DAY")
 //    println("PART 1: " + part1(input))
 //    println("PART 2: " + part2(input))
 }

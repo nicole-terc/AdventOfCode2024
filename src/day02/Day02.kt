@@ -1,3 +1,7 @@
+package day02
+
+import readInput
+import withoutIndex
 import kotlin.math.abs
 
 private const val DAY = "02"
@@ -59,16 +63,17 @@ fun main() {
     println("\n--- DAY $DAY ---\n")
 
     // TEST
-    val testInput = readInput("Day${DAY}_test")
+    val testInput = readInput("day${DAY}/Day${DAY}_test")
     val testOutput = part1(testInput)
-    val testOutput2 = part2(testInput)
     println("TEST 1: $testOutput")
+    check(testOutput == 2L)
+
+    val testOutput2 = part2(testInput)
     println("TEST 2: $testOutput2")
-    check(part1(testInput) == 2L)
-    check(part2(testInput) == 4L)
+    check(testOutput2 == 4L)
 
     // REAL INPUT
-    val input = readInput("Day$DAY")
+    val input = readInput("day${DAY}/Day$DAY")
     println("PART 1: " + part1(input))
     println("PART 2: " + part2(input))
 }
